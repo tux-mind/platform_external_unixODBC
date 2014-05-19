@@ -208,7 +208,10 @@ LT_BEGIN_C_DECLS
 LT_SCOPE const lt_dlvtable *	get_vtable (lt_user_data data);
 LT_END_C_DECLS
 #ifdef HAVE_LIBDLLOADER
-extern lt_dlsymlist		preloaded_symbols;
+#if !defined(__BIONIC__) && !defined(ANDROID)
+extern
+#endif
+lt_dlsymlist		preloaded_symbols;
 #endif
 
 /* Initialize libltdl. */
